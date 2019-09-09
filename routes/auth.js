@@ -4,7 +4,10 @@ const passport = require('passport');
 
 router.get(
   '/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    prompt: 'select_account'
+  })
 );
 
 router.get(
@@ -24,8 +27,8 @@ router.get('/verify', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
-})
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = router;
